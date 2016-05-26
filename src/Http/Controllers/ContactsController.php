@@ -1,10 +1,10 @@
 <?php
 
-namespace Ourgarage\StaticPages\Http\Controllers;
+namespace Ourgarage\Contacts\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class StaticPagesController extends Controller
+class ContactsController extends Controller
 {
 
     public function index()
@@ -13,7 +13,7 @@ class StaticPagesController extends Controller
             return view('packages.contacts.test');
         } else {
             return view('contacts::test');
-        }​
+        }
     }
 
 }

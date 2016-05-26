@@ -1,0 +1,19 @@
+{
+  "name": "ourgarage/contacts",
+  "description": "Package contacts for GITIOS CMS",
+  "type": "package",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "OurGarage Team",
+      "email": "ourgarage@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Ourgarage\\Contacts\\": "src/"
+    }
+  }
+}

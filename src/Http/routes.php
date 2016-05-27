@@ -1,5 +1,7 @@
 <?php
 
-use Ourgarage\Contacts\Http\Controllers;
+Route::group(['namespace' => 'Ourgarage\Contacts\Http\Controllers'], function () {
 
-Route::get('/contacts', 'ContactsController@index');
+    Route::get('/contacts', 'ContactsController@index');
+
+});

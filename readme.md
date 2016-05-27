@@ -3,20 +3,20 @@
 * Insert the file `composer.json` next string:
 ```
 "require": {
-        "ourgarage/static-pages": "dev-develop"
+        "ourgarage/contacts": "dev-master"
     },
 ```
 * Add a file `composer.json` next block:
 ```
 "repositories": [
         {
-            "type": "vcs",
-            "url": "https://github.com/ourgarage/static-pages.git"
+            "type": "git",
+            "url": "git@github.com:ourgarage/contacts.git"
         }
     ],
 ```
 * Run `php composer.phar update`
 * Add in your `config/app.php` file in providers:
 ```
-Ourgarage\StaticPages\StaticPagesServiceProvider::class,
+Ourgarage\Contacts\ContactsServiceProvider::class,
 ```

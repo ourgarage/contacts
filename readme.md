@@ -1,4 +1,4 @@
-# Package Statis-Pages for Engin CMS
+# Package Contacts for Engin CMS
 ### Installation manual for developer
 * Insert the file `composer.json` next string:
 ```

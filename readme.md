@@ -20,3 +20,5 @@
 ```
 Ourgarage\Contacts\ContactsServiceProvider::class,
 ```
+* Run `php artisan migrate --vendor/ourgarage/contacts/src/database/migrations`
+```

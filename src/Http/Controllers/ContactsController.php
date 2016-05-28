@@ -9,10 +9,10 @@ class ContactsController extends Controller
 
     public function index()
     {
-        if (view()->exists('packages.contacts.test')) {
-            return view('packages.contacts.test');
+        if (view()->exists('packages.contacts._admin-contacts')) {
+            return view('packages.contacts._admin-contacts');
         } else {
-            return view('contacts::test');
+            return view('contacts::_admin-contacts');
         }
     }
 

@@ -4,10 +4,10 @@ namespace Ourgarage\Contacts\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contacts extends Model
+class Contact extends Model
 {
     protected $table = 'contacts';
 
-    protected $fillable = ['email', 'phone', 'name', 'message'];
+    protected $fillable = ['text', 'sort'];
 
 }

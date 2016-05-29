@@ -2,8 +2,8 @@
 
 @section('css')
 
-        <link href="/packages/trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" type='text/css'>
-        <link href="/packages/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css" rel="stylesheet" type='text/css'>
+    <link href="/packages/trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" type='text/css'>
+    <link href="/packages/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css" rel="stylesheet" type='text/css'>
 
 @endsection
 
@@ -15,13 +15,13 @@
 
 @section('body')
 
-    hvjngbvc
+    <form action="{{ route('contacts::admin::contactsCreateOrUpdate') }}" method="POST">
+        {!! csrf_field() !!}
+        <textarea id="trumbowygContactCreate" name="text"
+                  placeholder="{{ trans('contacts::contacts.admin.textarea-placeholder') }}">{{ $contact or null }}</textarea>
+        <button class="btn btn-primary" type="submit">AAAA</button>
+    </form>
 
-    <div id="trumbowygContactCreate" placeholder="Your text as placeholder"></div>
-
-    <script>
-        appLocale = '{{ \App::getLocale() }}';
-    </script>
 @endsection
 
 @section('js')
@@ -33,6 +33,8 @@
     @if(\App::getLocale() == 'en')
         <script src="/packages/trumbowyg/dist/langs/ru.min.js" type="text/javascript"></script>
     @endif
+
+    <script>appLocale = '{{ \App::getLocale() }}';</script>
 
     <script>
         $('#trumbowygContactCreate').trumbowyg({

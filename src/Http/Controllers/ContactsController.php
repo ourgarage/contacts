@@ -24,11 +24,24 @@ class ContactsController extends Controller
 
     public function adminContactsCreate()
     {
+//        \Title::prepend(trans('dashboard.title.prepend'));
+//        \Title::append(trans('contacts::contacts.admin.title-append'));
+
         if (view()->exists('packages.contacts._admin-contacts')) {
             return view('packages.contacts._admin-contact-create');
         } else {
             return view('contacts::_admin-contact-create');
         }
+    }
+
+    public function adminContactsUpdate($id = null)
+    {
+
+    }
+
+    public function adminContactsCreateOrUpdatePost()
+    {
+        dd(request('text'));
     }
 
 }

@@ -33,7 +33,7 @@
     @if(\App::getLocale() == 'en')
         <script src="/packages/trumbowyg/dist/langs/ru.min.js" type="text/javascript"></script>
     @endif
-    
+
     <script>
         $('#trumbowygContactCreate').trumbowyg({
             lang: appLocale,

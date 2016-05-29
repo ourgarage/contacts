@@ -12,7 +12,16 @@
 
 @section('body')
 
-    bgbgbbgbg
+    @if(!$contacts->isEmpty())
+        @foreach($contacts as $contact)
+            <p>{!! $contact->text !!}</p>
+        @endforeach
+    @else
+        <div class="no-results text-center">
+            <i class="fa fa-map-signs fa-3x"></i>
+            <p>{{ trans('contacts::contacts.admin.no-contacts') }}</p>
+        </div>
+    @endif
 
 @endsection
 

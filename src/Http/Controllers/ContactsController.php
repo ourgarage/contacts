@@ -13,18 +13,22 @@ class ContactsController extends Controller
         \Title::prepend(trans('dashboard.title.prepend'));
         \Title::append(trans('contacts::contacts.admin.title-append'));
 
-        dd(Contact::all());
+        $contacts = Contact::all()->sortBy('sort');
 
         if (view()->exists('packages.contacts._admin-contacts')) {
-            return view('packages.contacts._admin-contacts');
+            return view('packages.contacts._admin-contacts', ['contacts' => $contacts]);
         } else {
-            return view('contacts::_admin-contacts');
+            return view('contacts::_admin-contacts', ['contacts' => $contacts]);
         }
     }
 
     public function adminContactsCreate()
     {
-        return 'fbgbbgbg';
+        if (view()->exists('packages.contacts._admin-contacts')) {
+            return view('packages.contacts._admin-contact-create');
+        } else {
+            return view('contacts::_admin-contact-create');
+        }
     }
 
 }

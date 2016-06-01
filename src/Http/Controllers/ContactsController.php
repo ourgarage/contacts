@@ -34,7 +34,7 @@ class ContactsController extends Controller
         }
     }
 
-    public function adminContactsUpdate($id = null)
+    public function adminContactsUpdateGet($id = null)
     {
 
     }

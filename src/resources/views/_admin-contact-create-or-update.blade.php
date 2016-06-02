@@ -14,7 +14,7 @@
 @endsection
 
 @section('body')
-
+    <a href="{{ route('contacts::admin::contactUpdate', 1) }}">fvbfdbgbgbb</a>
     <form action="{{ route('contacts::admin::contactsCreateOrUpdate') }}" method="POST">
         {!! csrf_field() !!}
         <textarea id="trumbowygContactCreate" name="text"

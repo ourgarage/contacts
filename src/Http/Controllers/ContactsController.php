@@ -11,7 +11,7 @@ class ContactsController extends Controller
     public function adminContactsIndex()
     {
         \Title::prepend(trans('dashboard.title.prepend'));
-        \Title::append(trans('contacts::contacts.admin.title-append'));
+        \Title::append(trans('contacts::contacts.admin.index-page-title'));
 
         $contacts = Contact::all()->sortBy('sort');
 
@@ -24,19 +24,28 @@ class ContactsController extends Controller
 
     public function adminContactsCreate()
     {
-//        \Title::prepend(trans('dashboard.title.prepend'));
-//        \Title::append(trans('contacts::contacts.admin.title-append'));
+        \Title::prepend(trans('dashboard.title.prepend'));
+        \Title::append(trans('contacts::contacts.admin.create-page-title'));
 
         if (view()->exists('packages.contacts._admin-contacts')) {
             return view('packages.contacts._admin-contact-create');
         } else {
-            return view('contacts::_admin-contact-create');
+            return view('contacts::_admin-contact-create-or-update');
         }
     }
 
-    public function adminContactsUpdateGet($id = null)
+    public function adminContactsUpdateGet($id, Contact $contact)
     {
+        \Title::prepend(trans('dashboard.title.prepend'));
+        \Title::append(trans('contacts::contacts.admin.update-page-title'));
 
+        $contact = $contact->where('id', $id)->first();
+
+        if (view()->exists('packages.contacts._admin-contacts')) {
+            return view('packages.contacts._admin-contact-create', ['contact' => $contact]);
+        } else {
+            return view('contacts::_admin-contact-create-or-update', ['contact' => $contact]);
+        }
     }
 
     public function adminContactsCreateOrUpdatePost()

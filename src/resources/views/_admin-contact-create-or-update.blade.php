@@ -2,8 +2,7 @@
 
 @section('css')
 
-    {{--<link href="/packages/trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" type='text/css'>--}}
-    {{--<link href="/packages/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css" rel="stylesheet" type='text/css'>--}}
+    {{--<link href="/packages/summernote/dist/summernote.css" rel="stylesheet" type='text/css'>--}}
 
 @endsection
 
@@ -18,7 +17,7 @@
     {{ isset($contact) ? 'AAAA' : 'BBBB' }}
     <form action="{{ route('contacts::admin::contactsCreateOrUpdate') }}" method="POST">
         {!! csrf_field() !!}
-        <textarea id="trumbowygContactCreate" name="text"
+        <textarea id="ckeditorContactCreate" name="text"
                   placeholder="{{ trans('contacts::contacts.admin.textarea-placeholder') }}">{{ $contact or null }}</textarea>
         <button class="btn btn-primary" type="submit">AAAA</button>
     </form>
@@ -27,40 +26,21 @@
 
 @section('js')
 
-    {{--<script src="/packages/trumbowyg/dist/trumbowyg.min.js" type="text/javascript"></script>--}}
-    {{--<script src="/packages/trumbowyg/dist/plugins/upload/trumbowyg.upload.min.js" type="text/javascript"></script>--}}
-    {{--<script src="/packages/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js" type="text/javascript"></script>--}}
+    <script src="/packages/ckeditor/ckeditor.js" type="text/javascript"></script>
 
-    {{--@if(\App::getLocale() == 'en')--}}
-        {{--<script src="/packages/trumbowyg/dist/langs/ru.min.js" type="text/javascript"></script>--}}
+    <script>
+        $(document).ready(function () {
+            CKEDITOR.replace('ckeditorContactCreate', {
+                filebrowserBrowseUrl : '/browser/browse.php',
+                filebrowserUploadUrl : '/uploader/upload.php'
+            });
+        });
+    </script>
+    {{--@if(\App::getLocale() == 'ru')--}}
+        {{--<script src="/packages/summernote/dist/lang/summernote-ru-RU.js" type="text/javascript"></script>--}}
+        {{--<script>var appLocale = 'ru-RU';</script>--}}
+    {{--@elseif(\App::getLocale() == 'en')--}}
+        {{--<script>var appLocale = 'en-EN';</script>--}}
     {{--@endif--}}
-
-    {{--<script>appLocale = '{{ \App::getLocale() }}';</script>--}}
-
-    {{--<script>--}}
-        {{--$('#trumbowygContactCreate').trumbowyg({--}}
-            {{--lang: appLocale,--}}
-            {{--btnsDef: {--}}
-                {{--image: {--}}
-                    {{--dropdown: ['insertImage', 'upload'],--}}
-                    {{--ico: 'insertImage'--}}
-                {{--}--}}
-            {{--},--}}
-            {{--btns: [--}}
-                {{--['viewHTML'],--}}
-                {{--['formatting'],--}}
-                {{--'btnGrp-semantic',--}}
-                {{--['superscript', 'subscript'],--}}
-                {{--['link'],--}}
-                {{--['image'],--}}
-                {{--'btnGrp-justify',--}}
-                {{--'btnGrp-lists',--}}
-                {{--['foreColor', 'backColor'],--}}
-                {{--['horizontalRule'],--}}
-                {{--['removeformat'],--}}
-                {{--['fullscreen']--}}
-            {{--]--}}
-        {{--});--}}
-    {{--</script>--}}
 
 @endsection

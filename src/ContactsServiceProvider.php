@@ -13,7 +13,7 @@ class ContactsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/resources/views', 'contacts');
 
         $this->publishes([
-            __DIR__.'/resources/views' => base_path('resources/views/packages/contacts'),
+            __DIR__.'/resources/views/user' => base_path('resources/views/packages/contacts'),
         ]);
 
         $this->publishes([

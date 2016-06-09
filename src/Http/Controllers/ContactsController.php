@@ -39,8 +39,11 @@ class ContactsController extends Controller
     public function adminContactsCreateOrUpdatePost($id = null)
     {
         if (is_null($id)) {
+            $max = Contact::max('sort');
+
             Contact::create([
-                'text' => request('text')
+                'text' => request('text'),
+                'sort' => $max + 1
             ]);
 
             Notifications::success(trans('contacts::contacts.admin.notification-create'), 'top');
@@ -57,17 +60,57 @@ class ContactsController extends Controller
 
     public function adminContactDelete($id)
     {
+        Contact::destroy($id);
 
+        Notifications::success(trans('contacts::contacts.admin.notification-delete'), 'top');
+
+        return redirect()->route('contacts::admin::contactsIndex');
     }
 
     public function adminContactUp($id)
     {
+        $contact = Contact::find($id);
 
+        $neighbor = Contact::where('sort', '<', $contact->sort)
+            ->orderBy('sort', 'desc')
+            ->first();
+
+        if (!is_null($neighbor->sort)) {
+            $contactSort = $contact->sort;
+
+            $contact->sort = $neighbor->sort;
+            $neighbor->sort = $contactSort;
+
+            $contact->save();
+            $neighbor->save();
+        }
+
+        Notifications::success(trans('contacts::contacts.admin.notification-up'), 'top');
+
+        return redirect()->route('contacts::admin::contactsIndex');
     }
 
     public function adminContactDown($id)
     {
+        $contact = Contact::find($id);
 
+        $neighbor = Contact::where('sort', '>', $contact->sort)
+            ->orderBy('sort', 'asc')
+            ->first();
+
+        if (!is_null($neighbor->sort)) {
+            $contactSort = $contact->sort;
+
+            $contact->sort = $neighbor->sort;
+            $neighbor->sort = $contactSort;
+
+            $contact->save();
+            $neighbor->save();
+        }
+
+        Notifications::success(trans('contacts::contacts.admin.notification-down'), 'top');
+
+        return redirect()->route('contacts::admin::contactsIndex');
     }
 
 }

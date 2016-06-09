@@ -14,6 +14,9 @@ return [
         'btn-update' => 'Update',
         'notification-create' => 'New contact successfully created',
         'notification-update' => 'The contact successfully updated',
+        'notification-delete' => 'The contact successfully removed',
+        'notification-up' => 'The contact successfully up',
+        'notification-down' => 'The contact successfully down',
         'table' => [
             'title-text' => 'Text',
             'title-update' => 'Updated',

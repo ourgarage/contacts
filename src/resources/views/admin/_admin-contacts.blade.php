@@ -64,7 +64,8 @@
                                       action="{{ route('contacts::admin::contactDelete', ['id' => $contact->id]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
-                                    <button type="submit" onclick="return buttonConfirmation(event, 'Activate?')"
+                                    {{ method_field('DELETE') }}
+                                    <button type="submit" onclick="return buttonConfirmation(event, 'Delete?')"
                                             class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top"
                                             title="{{ trans('contacts::contacts.admin.table.tooltip-delete') }}"><i class="fa fa-power-off"></i>
                                     </button>

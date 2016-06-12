@@ -11,6 +11,6 @@ Route::group(['middleware' => 'web', 'namespace' => 'Ourgarage\Contacts\Http\Con
     Route::delete('/admin/contacts/{id}/delete', 'ContactsController@adminContactDelete')->name('contacts::admin::contactDelete')->middleware('auth');
     Route::post('/admin/contacts/{id}/up', 'ContactsController@adminContactUp')->name('contacts::admin::contactUp')->middleware('auth');
     Route::post('/admin/contacts/{id}/own', 'ContactsController@adminContactDown')->name('contacts::admin::contactDown')->middleware('auth');
-    Route::post('/admin/contacts/image/upload', 'ContactsController@adminContactImageUpload')->name('contacts::admin::imageUpload')->middleware('auth');
+    Route::post('/admin/contacts/upload/image', 'ContactsController@adminContactImageUpload')->name('contacts::admin::imageUpload')->middleware('auth');
 
 });

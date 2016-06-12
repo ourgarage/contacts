@@ -32,7 +32,7 @@
 @section('js')
 
     <script src="/libs/trumbowyg/dist/trumbowyg.min.js"></script>
-    <script>ImageUpload = "{!! route('contacts::admin::imageUpload') !!}";</script>
+    <script>imageUploadUrl = "{!! route('contacts::admin::imageUpload') !!}";</script>
     <script src="/libs/trumbowyg/dist/plugins/upload/trumbowyg.upload.js"></script>
     <script src="/libs/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js"></script>
 

@@ -5,6 +5,7 @@ namespace Ourgarage\Contacts\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Ourgarage\Contacts\Models\Contact;
 use Notifications;
+use File;
 
 class ContactsController extends Controller
 {
@@ -111,6 +112,39 @@ class ContactsController extends Controller
         Notifications::success(trans('contacts::contacts.admin.notification-down'), 'top');
 
         return redirect()->route('contacts::admin::contactsIndex');
+    }
+
+    public function adminContactImageUpload()
+    {
+        if(File::exists(public_path('packages/contacts/images/'))){
+            return 'OK';
+        } else {
+            File::makeDirectory(public_path('packages/contacts/images'), 0755, true);
+            return 'NO';
+        }
+        define("UPLOADDIR", public_path('packages/contacts/images/'));
+// Detect if it is an AJAX request
+        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+            $file = array_shift($_FILES);
+            if(move_uploaded_file($file['tmp_name'], UPLOADDIR . basename($file['name']))) {
+                $file = '/images/admin/upload_images/' . $file['name'];
+                $data = array(
+                    'success' => true,
+                    'file'    => $file,
+                );
+            } else {
+                $error = true;
+                $data = array(
+                    'message' => 'uploadError',
+                );
+            }
+        } else {
+            $data = array(
+                'message' => 'uploadNotAjax',
+                'formData' => $_POST
+            );
+        }
+        echo json_encode($data);
     }
 
 }

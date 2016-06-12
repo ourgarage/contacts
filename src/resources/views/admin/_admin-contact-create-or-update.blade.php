@@ -21,7 +21,6 @@
         <div class="form-group">
             <textarea id="contactTrumbowyg" name="text" class="form-control" rows="6"
                       placeholder="{{ trans('contacts::contacts.admin.textarea-placeholder') }}">{{ isset($contact) ? $contact->text : null }}</textarea>
-            <input type="hidden" name="picture" role="uploadcare-uploader"/>
         </div>
         <button class="btn btn-primary pull-right" type="submit">
             {{ isset($contact) ? trans('contacts::contacts.admin.btn-update') : trans('contacts::contacts.admin.btn-create') }}
@@ -33,7 +32,8 @@
 @section('js')
 
     <script src="/libs/trumbowyg/dist/trumbowyg.min.js"></script>
-    <script src="/libs/trumbowyg/dist/plugins/upload/trumbowyg.upload.min.js"></script>
+    <script>ImageUpload = "{!! route('contacts::admin::imageUpload') !!}";</script>
+    <script src="/libs/trumbowyg/dist/plugins/upload/trumbowyg.upload.js"></script>
     <script src="/libs/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js"></script>
 
     <script>

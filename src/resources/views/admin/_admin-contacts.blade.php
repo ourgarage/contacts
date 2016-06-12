@@ -12,10 +12,8 @@
 
 @section('body')
 
-    {{--<a href="{{ route('contacts::admin::contactUpdate', 1) }}">fvbfdbgbgbb</a>--}}
     <div>
         @if(!$contacts->isEmpty())
-
 
             <div class="table-responsive">
                 <table class="table table-hover">

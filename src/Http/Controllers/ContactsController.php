@@ -2,12 +2,14 @@
 
 namespace Ourgarage\Contacts\Http\Controllers;
 
+use App\DTO\ImageResizeDTO;
 use App\Http\Controllers\Controller;
+use App\Services\UploadImageSaverService;
 use Ourgarage\Contacts\Http\Requests\ContactsFileUploadRequest;
 use Ourgarage\Contacts\Models\Contact;
 use Notifications;
 use File;
-use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ContactsController extends Controller
 {
@@ -124,15 +126,22 @@ class ContactsController extends Controller
             File::makeDirectory($uploadDir, 0755, true);
         }
 
-//            $file = array_shift($_FILES);
-
         if($request->ajax()) {
             $file = $request->file('uploadFile');
+            $newFilename = str_random() . '.' . $file->getClientOriginalExtension();
 
-            //Edit And Save File
+            $dto = new ImageResizeDTO();
+            $dto->setWidth(1300);
+            $dto->setHeight(1300);
+            $dto->setPath($uploadDir);
+            $dto->setImage($file);
+            $dto->setFilename($newFilename);
+            $dto->setQuality(95);
 
-            if('ok') {
-                $file = $uploadDir . $file['name']; //Path
+            $saver = UploadImageSaverService::saveImage($dto);
+
+            if($saver) {
+                $file = asset(config('packages.contacts.imageSavePath') . $newFilename);
                 $data = array(
                     'success' => true,
                     'file'    => $file,

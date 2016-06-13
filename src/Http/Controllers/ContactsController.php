@@ -3,6 +3,7 @@
 namespace Ourgarage\Contacts\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Ourgarage\Contacts\Http\Requests\ContactsFileUploadRequest;
 use Ourgarage\Contacts\Models\Contact;
 use Notifications;
 use File;
@@ -115,7 +116,7 @@ class ContactsController extends Controller
         return redirect()->route('contacts::admin::contactsIndex');
     }
 
-    public function adminContactImageUpload(Request $request)
+    public function adminContactImageUpload(ContactsFileUploadRequest $request)
     {
         $uploadDir = public_path(config('packages.contacts.imageSavePath'));
 

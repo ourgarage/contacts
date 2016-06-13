@@ -9,7 +9,6 @@ use Ourgarage\Contacts\Http\Requests\ContactsFileUploadRequest;
 use Ourgarage\Contacts\Models\Contact;
 use Notifications;
 use File;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class ContactsController extends Controller
 {
@@ -136,7 +135,7 @@ class ContactsController extends Controller
             $dto->setPath($uploadDir);
             $dto->setImage($file);
             $dto->setFilename($newFilename);
-            $dto->setQuality(95);
+            $dto->setQuality(75);
 
             $saver = UploadImageSaverService::saveImage($dto);
 

@@ -22,6 +22,7 @@ class ContactsController extends Controller
 
     public function adminContactsCreate()
     {
+        return config('packages.contacts.caption');
         \Title::prepend(trans('dashboard.title.prepend'));
         \Title::append(trans('contacts::contacts.admin.create-page-title'));
 

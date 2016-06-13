@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Ourgarage\Contacts\Models\Contact;
 use Notifications;
 use File;
+use Illuminate\Http\Request;
 
 class ContactsController extends Controller
 {
@@ -114,20 +115,19 @@ class ContactsController extends Controller
         return redirect()->route('contacts::admin::contactsIndex');
     }
 
-    public function adminContactImageUpload()
+    public function adminContactImageUpload(Request $request)
     {
-        if(File::exists(public_path('packages/contacts/images/'))){
-            return 'OK';
-        } else {
+        if(!File::exists(public_path('packages/contacts/images/'))){
             File::makeDirectory(public_path('packages/contacts/images'), 0755, true);
-            return 'NO';
         }
-        define("UPLOADDIR", public_path('packages/contacts/images/'));
-// Detect if it is an AJAX request
-        if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-            $file = array_shift($_FILES);
-            if(move_uploaded_file($file['tmp_name'], UPLOADDIR . basename($file['name']))) {
-                $file = '/images/admin/upload_images/' . $file['name'];
+
+        $uploadDir = public_path('packages/contacts/images/');
+
+        if($request->ajax()) {
+//            $file = array_shift($_FILES);
+            $file = $request->file('uploadFile');
+            if(move_uploaded_file($file['tmp_name'], $uploadDir . basename($file['name']))) {
+                $file = '/packages/contacts/images/' . $file['name'];
                 $data = array(
                     'success' => true,
                     'file'    => $file,

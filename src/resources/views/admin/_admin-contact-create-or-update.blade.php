@@ -19,7 +19,7 @@
           method="POST">
         {!! csrf_field() !!}
         <div class="form-group">
-            <textarea id="contactTrumbowyg" name="text" class="form-control" rows="6"
+            <textarea id="trumbowygEditor" name="text" class="form-control" rows="6"
                       placeholder="{{ trans('contacts::contacts.admin.textarea-placeholder') }}">{{ isset($contact) ? $contact->text : null }}</textarea>
         </div>
         <button class="btn btn-primary pull-right" type="submit">
@@ -33,39 +33,14 @@
 
     <script src="/libs/trumbowyg/dist/trumbowyg.min.js"></script>
     <script>imageUploadUrl = "{!! route('contacts::admin::imageUpload') !!}";</script>
+
+    @if(App::getLocale() != 'en')
+        <script>siteLocale = '{!! App::getLocale() !!}';</script>
+        <script src="/libs/trumbowyg/dist/langs/{{ App::getLocale() }}.min.js"></script>
+    @endif
+
     <script src="/libs/trumbowyg/dist/plugins/upload/trumbowyg.upload.js"></script>
     <script src="/libs/trumbowyg/dist/plugins/colors/trumbowyg.colors.min.js"></script>
-
-    <script>
-        $('#contactTrumbowyg').trumbowyg({
-            autogrow: true,
-            btnsDef: {
-                align: {
-                    dropdown: ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
-                    ico: 'justifyLeft'
-                },
-                image: {
-                    dropdown: ['insertImage', 'upload'],
-                    ico: 'insertImage'
-                },
-            },
-            btns: [
-                ['viewHTML'],
-                ['undo', 'redo'],
-                ['formatting'],
-                'btnGrp-semantic',
-                ['superscript', 'subscript'],
-                ['link'],
-                ['image'],
-                'btnGrp-justify',
-                'btnGrp-lists',
-                ['foreColor', 'backColor'],
-                ['horizontalRule'],
-                ['removeformat'],
-                ['fullscreen'],
-
-            ],
-        });
-    </script>
+    <script src="/js/trumbowyg/_upload-color-plugins.js"></script>
 
 @endsection

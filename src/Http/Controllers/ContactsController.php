@@ -124,11 +124,15 @@ class ContactsController extends Controller
             File::makeDirectory($uploadDir, 0755, true);
         }
 
-        if($request->ajax()) {
 //            $file = array_shift($_FILES);
+
+        if($request->ajax()) {
             $file = $request->file('uploadFile');
-            if(move_uploaded_file($file['tmp_name'], $uploadDir . basename($file['name']))) {
-                $file = '/packages/contacts/images/' . $file['name'];
+
+            //Edit And Save File
+
+            if('ok') {
+                $file = $uploadDir . $file['name']; //Path
                 $data = array(
                     'success' => true,
                     'file'    => $file,
@@ -145,7 +149,8 @@ class ContactsController extends Controller
                 'formData' => $_POST
             );
         }
-        echo json_encode($data);
+
+        return json_encode($data);
     }
 
 }

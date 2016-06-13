@@ -22,7 +22,6 @@ class ContactsController extends Controller
 
     public function adminContactsCreate()
     {
-        return config('packages.contacts.caption');
         \Title::prepend(trans('dashboard.title.prepend'));
         \Title::append(trans('contacts::contacts.admin.create-page-title'));
 
@@ -118,11 +117,11 @@ class ContactsController extends Controller
 
     public function adminContactImageUpload(Request $request)
     {
-        if(!File::exists(public_path('packages/contacts/images/'))){
-            File::makeDirectory(public_path('packages/contacts/images'), 0755, true);
-        }
+        $uploadDir = public_path(config('packages.contacts.imageSavePath'));
 
-        $uploadDir = public_path('packages/contacts/images/');
+        if(!File::exists($uploadDir)){
+            File::makeDirectory($uploadDir, 0755, true);
+        }
 
         if($request->ajax()) {
 //            $file = array_shift($_FILES);

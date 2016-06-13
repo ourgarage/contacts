@@ -7,5 +7,6 @@ return [
         'caption' => 'Contacts',
         'icon' => 'fa fa-map-signs',
         'active' => 'adminContactsIndex',
+        'imageSavePath' => 'packages/contacts/images/'
     ],
 ];

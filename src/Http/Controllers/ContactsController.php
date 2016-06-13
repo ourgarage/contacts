@@ -2,9 +2,9 @@
 
 namespace Ourgarage\Contacts\Http\Controllers;
 
-use App\DTO\ImageResizeDTO;
+use Ourgarage\Contacts\DTO\ImageResizeDTO;
 use App\Http\Controllers\Controller;
-use App\Services\UploadImageSaverService;
+use Ourgarage\Contacts\Services\UploadImageSaverService;
 use Ourgarage\Contacts\Http\Requests\ContactsFileUploadRequest;
 use Ourgarage\Contacts\Models\Contact;
 use Notifications;

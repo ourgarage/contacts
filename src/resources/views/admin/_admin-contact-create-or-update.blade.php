@@ -31,6 +31,8 @@
 
 @section('js')
 
-    @include('api.wysiwyg', ['elementID' => '#contactCreate', 'siteLocale' => App::getLocale(), 'imageUploadUrl' => route('contacts::admin::imageUpload'), 'assembly' => 'full'])
+    @inject('connect', 'App\Http\ViewConnectors\EditorConnector')
+
+    {{ $connect->connect('#contactCreate', App::getLocale(), route('contacts::admin::imageUpload'), 'full') }}
 
 @endsection

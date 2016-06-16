@@ -33,6 +33,6 @@
 
     @inject('connect', 'App\Http\ViewConnectors\EditorConnector')
 
-    {{ $connect->connect('#contactCreate', App::getLocale(), route('contacts::admin::imageUpload'), 'full') }}
+    {!! $connect->connect('#contactCreate', App::getLocale(), route('contacts::admin::imageUpload'), 'full') !!}
 
 @endsection

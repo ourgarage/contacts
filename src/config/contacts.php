@@ -6,6 +6,8 @@ return [
 
         'name' => 'contacts',
 
+        'imageSavePath' => 'packages/contacts/images/',
+
         'menu' => [
             'url' => 'contacts::admin::contactsIndex',
             'caption' => 'Contacts',

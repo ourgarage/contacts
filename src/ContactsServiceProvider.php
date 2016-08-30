@@ -20,9 +20,7 @@ class ContactsServiceProvider extends ServiceProvider
             __DIR__.'/resources/views/admin/' => base_path('resources/views/vendor/contacts'),
         ]);
 
-        $this->publishes([
-            __DIR__.'/database/migrations/' => base_path('/database/migrations')
-        ], 'migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'contacts');
     }

@@ -17,7 +17,7 @@ class ContactsServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            __DIR__.'/resources/views/user' => base_path('resources/views/vendor/contacts'),
+            __DIR__.'/resources/views/admin/' => base_path('resources/views/vendor/contacts'),
         ]);
 
         $this->publishes([

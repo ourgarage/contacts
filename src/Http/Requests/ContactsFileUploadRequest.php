@@ -3,10 +3,11 @@
 namespace Ourgarage\Contacts\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Foundation\Http\FormRequest;
 use Notifications;
 use App\Http\Requests\Request;
 
-class ContactsFileUploadRequest extends Request
+class ContactsFileUploadRequest extends FormRequest
 {
     public function authorize()
     {
@@ -21,12 +22,12 @@ class ContactsFileUploadRequest extends Request
 
         return $rules;
     }
-    
+
     public function response(Array $errors)
     {
         return Response::json($errors);
     }
-    
+
     public function formatErrors(Validator $validator)
     {
         return $validator->errors()->all()->toJson();

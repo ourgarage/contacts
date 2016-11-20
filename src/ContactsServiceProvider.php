@@ -14,10 +14,7 @@ class ContactsServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/resources/images/contacts/' => base_path('public/packages/contacts'),
-        ]);
-
-        $this->publishes([
-            __DIR__.'/resources/views/admin/' => base_path('resources/views/vendor/contacts'),
+            __DIR__.'/resources/views/admin/' => base_path('resources/views/vendor/contacts')
         ]);
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');

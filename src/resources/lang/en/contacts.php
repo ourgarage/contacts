@@ -9,7 +9,6 @@ return [
         'update-page-title' => 'Edit contact',
         'create-btn' => 'Create',
         'no-contacts' => 'No contacts',
-        'textarea-placeholder' => 'Create new contact',
         'btn-create' => 'Create',
         'btn-update' => 'Update',
         'notification-create' => 'New contact successfully created',

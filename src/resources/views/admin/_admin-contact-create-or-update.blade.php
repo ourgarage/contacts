@@ -1,10 +1,5 @@
 @extends('admin.main')
 
-@section('css')
-    <link href="/libs/trumbowyg/dist/ui/trumbowyg.min.css" rel="stylesheet" type='text/css'>
-    <link href="/libs/trumbowyg/dist/plugins/colors/ui/trumbowyg.colors.min.css" rel="stylesheet" type='text/css'>
-@endsection
-
 @section('body-title')
     {{ isset($contact) ? trans('contacts::contacts.admin.update-page-title') : trans('contacts::contacts.admin.create-page-title') }}
 @endsection
@@ -26,5 +21,5 @@
 
 @section('js')
     @inject('connect', 'App\Http\ViewConnectors\EditorConnector')
-    {!! $connect->connect('#contactCreate', App::getLocale(), route('contacts::admin::imageUpload'), 'full') !!}
+    {!! $connect->connect('#contactCreate', App::getLocale(), route('contacts::admin::imageUpload'), App\Http\ViewConnectors\EditorConnector::MODE_FULL) !!}
 @endsection

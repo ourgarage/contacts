@@ -9,10 +9,11 @@
           method="POST">
         {!! csrf_field() !!}
         <div class="form-group">
-            <textarea id="contactCreate" name="text" class="form-control" rows="6">
+            <textarea id="contactCreate" name="text" class="form-control" rows="15">
                 {{ isset($contact) ? $contact->text : null }}
             </textarea>
         </div>
+        <input id="dcdcdddcc" type="file">
         <button class="btn btn-primary pull-right" type="submit">
             {{ isset($contact) ? trans('contacts::contacts.admin.btn-update') : trans('contacts::contacts.admin.btn-create') }}
         </button>
@@ -21,5 +22,5 @@
 
 @section('js')
     @inject('connect', 'App\Http\ViewConnectors\EditorConnector')
-    {!! $connect->connect('#contactCreate', App::getLocale(), route('contacts::admin::imageUpload'), App\Http\ViewConnectors\EditorConnector::MODE_FULL) !!}
+    {!! $connect->connect('#contactCreate', App::getLocale(), route('contacts::admin::imageUpload'), App\Http\ViewConnectors\EditorConnector::MODE_FULL, true) !!}
 @endsection

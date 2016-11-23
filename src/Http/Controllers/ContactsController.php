@@ -12,35 +12,35 @@ use File;
 
 class ContactsController extends Controller
 {
-    public function adminContactsIndex()
+    public function contactsIndex()
     {
         \Title::prepend(trans('dashboard.title.prepend'));
         \Title::append(trans('contacts::contacts.admin.index-page-title'));
 
         $contacts = Contact::orderBy('sort')->paginate(10);
 
-        return view('contacts::admin._admin-contacts', ['contacts' => $contacts]);
+        return view('contacts::admin._contacts', ['contacts' => $contacts]);
     }
 
-    public function adminContactsCreate()
+    public function contactsCreate()
     {
         \Title::prepend(trans('dashboard.title.prepend'));
         \Title::append(trans('contacts::contacts.admin.create-page-title'));
 
-        return view('contacts::admin._admin-contact-create-or-update');
+        return view('contacts::admin._contact-create-or-update');
     }
 
-    public function adminContactsUpdateGet($id, Contact $contact)
+    public function contactsUpdateGet($id, Contact $contact)
     {
         \Title::prepend(trans('dashboard.title.prepend'));
         \Title::append(trans('contacts::contacts.admin.update-page-title'));
 
         $contact = $contact->where('id', $id)->first();
 
-        return view('contacts::admin._admin-contact-create-or-update', ['contact' => $contact]);
+        return view('contacts::admin._contact-create-or-update', ['contact' => $contact]);
     }
 
-    public function adminContactsCreateOrUpdatePost($id = null)
+    public function contactsCreateOrUpdatePost($id = null)
     {
         if (is_null($id)) {
             $max = Contact::max('sort');
@@ -62,7 +62,7 @@ class ContactsController extends Controller
         return redirect()->route('contacts::admin::contactsIndex');
     }
 
-    public function adminContactDelete($id)
+    public function contactDelete($id)
     {
         Contact::destroy($id);
 
@@ -71,7 +71,7 @@ class ContactsController extends Controller
         return redirect()->route('contacts::admin::contactsIndex');
     }
 
-    public function adminContactUp($id)
+    public function contactUp($id)
     {
         $contact = Contact::find($id);
 
@@ -94,7 +94,7 @@ class ContactsController extends Controller
         return redirect()->route('contacts::admin::contactsIndex');
     }
 
-    public function adminContactDown($id)
+    public function contactDown($id)
     {
         $contact = Contact::find($id);
 
@@ -117,7 +117,7 @@ class ContactsController extends Controller
         return redirect()->route('contacts::admin::contactsIndex');
     }
 
-    public function adminContactImageUpload(ContactsFileUploadRequest $request)
+    public function contactImageUpload(ContactsFileUploadRequest $request)
     {
         $uploadDir = public_path(config('packages.contacts.imageSavePath'));
 

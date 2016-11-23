@@ -10,9 +10,7 @@
     }
   ],
   "minimum-stability": "stable",
-  "require": {
-    "intervention/image": "2.*"
-  },
+  "require": {},
   "autoload": {
     "psr-4": {
       "Ourgarage\\Contacts\\": "src/"

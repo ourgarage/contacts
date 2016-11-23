@@ -36,28 +36,28 @@
                                       action="{{ route('contacts::admin::contactDown', ['id' => $contact->id]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <button type="submit" class="btn btn-xs btn-info" data-toggle="tooltip"
                                             data-placement="top"
-                                            title="{{ trans('contacts::contacts.admin.table.tooltip-down') }}"><i class="fa fa-arrow-down"></i>
+                                            title="{{ trans('contacts::contacts.admin.table.tooltip-down') }}"><i
+                                                class="fa fa-arrow-down"></i>
                                     </button>
                                 </form>
                                 <form class="inline"
                                       action="{{ route('contacts::admin::contactUp', ['id' => $contact->id]) }}"
                                       method="POST">
                                     {{ csrf_field() }}
+                                    {{ method_field('PUT') }}
                                     <button type="submit" class="btn btn-xs btn-success" data-toggle="tooltip"
                                             data-placement="top"
-                                            title="{{ trans('contacts::contacts.admin.table.tooltip-up') }}"><i class="fa fa-arrow-up"></i>
+                                            title="{{ trans('contacts::contacts.admin.table.tooltip-up') }}"><i
+                                                class="fa fa-arrow-up"></i>
                                     </button>
                                 </form>
-                                <form class="inline"
-                                      action="{{ route('contacts::admin::contactUpdate', ['id' => $contact->id]) }}"
-                                      method="GET">
-                                    <button type="submit" class="btn btn-xs btn-warning" data-toggle="tooltip"
-                                            data-placement="top"
-                                            title="{{ trans('contacts::contacts.admin.table.tooltip-update') }}"><i class="fa fa-pencil"></i>
-                                    </button>
-                                </form>
+                                <a href="{{ route('contacts::admin::contactUpdate', ['id' => $contact->id]) }}"
+                                   class="btn btn-xs btn-warning" data-toggle="tooltip" data-placement="top"
+                                   title="{{ trans('contacts::contacts.admin.table.tooltip-update') }}"><i
+                                            class="fa fa-pencil"></i></a>
                                 <form class="inline"
                                       action="{{ route('contacts::admin::contactDelete', ['id' => $contact->id]) }}"
                                       method="POST">
@@ -65,7 +65,8 @@
                                     {{ method_field('DELETE') }}
                                     <button type="submit" onclick="return buttonConfirmation(event, 'Delete?')"
                                             class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top"
-                                            title="{{ trans('contacts::contacts.admin.table.tooltip-delete') }}"><i class="fa fa-power-off"></i>
+                                            title="{{ trans('contacts::contacts.admin.table.tooltip-delete') }}"><i
+                                                class="fa fa-power-off"></i>
                                     </button>
                                 </form>
                             </td>

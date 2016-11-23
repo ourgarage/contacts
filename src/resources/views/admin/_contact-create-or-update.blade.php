@@ -8,12 +8,8 @@
     <form action="{{ route('contacts::admin::contactsCreateOrUpdate', isset($contact) ? $contact->id : null) }}"
           method="POST">
         {!! csrf_field() !!}
-        <div class="form-group">
-            <textarea id="contactCreate" name="text" class="form-control" rows="15">
-                {{ isset($contact) ? $contact->text : null }}
-            </textarea>
-        </div>
-        <input id="dcdcdddcc" type="file">
+        <div class="form-group"><textarea id="contactCreate" name="text" class="form-control"
+                                          rows="15">{{ isset($contact) ? $contact->text : null }}</textarea></div>
         <button class="btn btn-primary pull-right" type="submit">
             {{ isset($contact) ? trans('contacts::contacts.admin.btn-update') : trans('contacts::contacts.admin.btn-create') }}
         </button>

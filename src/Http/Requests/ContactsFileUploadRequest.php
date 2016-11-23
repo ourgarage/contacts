@@ -17,7 +17,7 @@ class ContactsFileUploadRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'uploadFile' => 'required|mimes:jpg,jpeg,png,gif,bmp|min:5|max:10240'
+            'uploadFile' => 'required|mimes:jpg,jpeg,png,gif,bmp'
         ];
 
         return $rules;

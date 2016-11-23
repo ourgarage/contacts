@@ -79,7 +79,7 @@ class ContactsController extends Controller
             ->orderBy('sort', 'desc')
             ->first();
 
-        if (!is_null($neighbor->sort)) {
+        if ($neighbor && !is_null($neighbor->sort)) {
             $contactSort = $contact->sort;
 
             $contact->sort = $neighbor->sort;
@@ -87,9 +87,9 @@ class ContactsController extends Controller
 
             $contact->save();
             $neighbor->save();
-        }
 
-        Notifications::success(trans('contacts::contacts.admin.notification-up'), 'top');
+            Notifications::success(trans('contacts::contacts.admin.notification-up'), 'top');
+        }
 
         return redirect()->route('contacts::admin::contactsIndex');
     }
@@ -102,7 +102,7 @@ class ContactsController extends Controller
             ->orderBy('sort', 'asc')
             ->first();
 
-        if (!is_null($neighbor->sort)) {
+        if ($neighbor && !is_null($neighbor->sort)) {
             $contactSort = $contact->sort;
 
             $contact->sort = $neighbor->sort;
@@ -110,9 +110,9 @@ class ContactsController extends Controller
 
             $contact->save();
             $neighbor->save();
-        }
 
-        Notifications::success(trans('contacts::contacts.admin.notification-down'), 'top');
+            Notifications::success(trans('contacts::contacts.admin.notification-down'), 'top');
+        }
 
         return redirect()->route('contacts::admin::contactsIndex');
     }

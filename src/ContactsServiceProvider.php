@@ -23,7 +23,7 @@ class ContactsServiceProvider extends ServiceProvider
     }
 
     public function register() {
-        $this->app->make('Ourgarage\Contacts\Http\Controllers\ContactsController');
+        $this->app->make('Ourgarage\Contacts\Http\Controllers\Admin\ContactsController');
         $this->app->make('Ourgarage\Contacts\Models\Contact');
         $this->app->make('Ourgarage\Contacts\Models\Feedback');
 

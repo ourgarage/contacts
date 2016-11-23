@@ -1,10 +1,10 @@
 <?php
 
-namespace Ourgarage\Contacts\Http\Controllers;
+namespace Ourgarage\Contacts\Http\Controllers\Admin;
 
-use Ourgarage\Contacts\DTO\ImageResizeDTO;
+use App\DTO\ImageResizeDTO;
 use App\Http\Controllers\Controller;
-use Ourgarage\Contacts\Services\UploadImageSaverService;
+use App\Services\UploadImageSaverService;
 use Ourgarage\Contacts\Http\Requests\ContactsFileUploadRequest;
 use Ourgarage\Contacts\Models\Contact;
 use Notifications;
